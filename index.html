@@ -71,13 +71,14 @@ h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.08;margin:0 0 .5rem;font-wei
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fade{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fade{animation:none;opacity:1}}
-.chart-mobile{display:none}
+.chart-mob{display:none}
+.mlbl text{font-family:var(--sans);font-size:13px;fill:var(--ink);font-weight:500}
+.mlbl .lbl-accent{fill:var(--accent);font-weight:600}
 @media (max-width:640px){
-  .lbl,.axis text{display:none}
+  .chart-desk{display:none}
+  .chart svg.chart-mob{display:block}
+  .chart-mob .axis text{font-size:12px}
   .hero{grid-template-columns:1fr}.avatar{width:88px;height:88px}
-  .chart-mobile{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;list-style:none;margin:1rem 0 0;padding:0;font-size:.95rem}
-  .chart-mobile span{font-family:var(--mono);font-size:.85rem;color:var(--muted);padding-top:.1rem}
-  .chart-mobile .next{color:var(--accent);font-weight:600}
 }
 
 /* Sections */
@@ -162,7 +163,7 @@ footer .actions{margin-top:1rem}
 
 <figure class="chart" aria-label="Career path drawn as a time series, with a forecast toward AI engineering">
   <figcaption class="chart-cap">My career, plotted the way a forecaster would. Confidence band included, because nobody is 100% sure about the future.</figcaption>
-  <svg viewBox="0 0 1000 300" role="img" aria-hidden="true">
+  <svg class="chart-desk" viewBox="0 0 1000 300" role="img" aria-hidden="true">
     <g class="axis">
       <line x1="60" y1="270" x2="940" y2="270"/>
       <text x="60" y="292" text-anchor="middle">2021</text>
@@ -186,23 +187,42 @@ footer .actions{margin-top:1rem}
       <circle class="dot dot-now" cx="780" cy="110" r="7"/>
     </g>
     <g class="fade">
-      <text class="lbl" x="123" y="228" text-anchor="middle">Bank audit</text>
-      <text class="lbl" x="186" y="250" text-anchor="middle">Data analyst</text>
+      <text class="lbl" x="110" y="250" text-anchor="end">Bank audit</text>
+      <text class="lbl" x="186" y="205" text-anchor="middle">Data analyst</text>
       <text class="lbl" x="374" y="173" text-anchor="middle">NLP &amp; ML</text>
-      <text class="lbl" x="474" y="186" text-anchor="middle">M.Sc. TU Dortmund</text>
-      <text class="lbl" x="600" y="115" text-anchor="middle">Kelvion SIOP</text>
+      <text class="lbl" x="474" y="140" text-anchor="middle">M.Sc. TU Dortmund</text>
+      <text class="lbl" x="600" y="160" text-anchor="middle">Kelvion SIOP</text>
       <text class="lbl" x="780" y="140" text-anchor="middle">Now</text>
       <text class="lbl lbl-accent" x="935" y="22" text-anchor="end">End-to-end AI engineering</text>
     </g>
   </svg>
-  <ol class="chart-mobile">
-    <li style="display:contents"><span>2021</span><div>Bank audit</div></li>
-    <li style="display:contents"><span>2022</span><div>Data analyst</div></li>
-    <li style="display:contents"><span>2023</span><div>NLP &amp; ML</div></li>
-    <li style="display:contents"><span>2024</span><div>M.Sc. TU Dortmund</div></li>
-    <li style="display:contents"><span>2025</span><div>Kelvion SIOP</div></li>
-    <li style="display:contents"><span>Next</span><div class="next">End-to-end AI engineering</div></li>
-  </ol>
+  <svg class="chart-mob" viewBox="0 0 400 340" role="img" aria-hidden="true">
+    <g class="axis">
+      <line x1="30" y1="315" x2="370" y2="315"/>
+      <text x="30" y="334" text-anchor="middle">2021</text>
+      <text x="127" y="334" text-anchor="middle">2023</text>
+      <text x="224" y="334" text-anchor="middle">2025</text>
+      <text x="321" y="334" text-anchor="middle">2027</text>
+    </g>
+    <path class="band fade" d="M311,118 C335,95 352,60 370,40 L370,125 C352,124 335,121 311,118 Z"/>
+    <path class="hist draw" d="M54,290 L79,262 L152,222 L191,180 L240,145 L311,118"/>
+    <path class="fc fade" d="M311,118 C335,105 352,85 370,72"/>
+    <circle class="dot" cx="54" cy="290" r="5"/>
+    <circle class="dot" cx="79" cy="262" r="5"/>
+    <circle class="dot" cx="152" cy="222" r="5"/>
+    <circle class="dot" cx="191" cy="180" r="5"/>
+    <circle class="dot" cx="240" cy="145" r="5"/>
+    <circle class="dot dot-now" cx="311" cy="118" r="6"/>
+    <g class="fade mlbl">
+      <text x="34" y="308">Bank audit</text>
+      <text x="88" y="280">Data analyst</text>
+      <text x="160" y="244">NLP &amp; ML</text>
+      <text x="184" y="164" text-anchor="end">M.Sc. TU Dortmund</text>
+      <text x="248" y="168">Kelvion SIOP</text>
+      <text x="311" y="143" text-anchor="middle">Now</text>
+      <text class="lbl-accent" x="370" y="26" text-anchor="end">AI engineering</text>
+    </g>
+  </svg>
 </figure>
 
 <section id="about">
