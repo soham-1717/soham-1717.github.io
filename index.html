@@ -71,7 +71,14 @@ h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.08;margin:0 0 .5rem;font-wei
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fade{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fade{animation:none;opacity:1}}
-@media (max-width:640px){.lbl{display:none}.hero{grid-template-columns:1fr}.avatar{width:88px;height:88px}}
+.chart-mobile{display:none}
+@media (max-width:640px){
+  .lbl,.axis text{display:none}
+  .hero{grid-template-columns:1fr}.avatar{width:88px;height:88px}
+  .chart-mobile{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;list-style:none;margin:1rem 0 0;padding:0;font-size:.95rem}
+  .chart-mobile span{font-family:var(--mono);font-size:.85rem;color:var(--muted);padding-top:.1rem}
+  .chart-mobile .next{color:var(--accent);font-weight:600}
+}
 
 /* Sections */
 section{padding:4rem 0 0}
@@ -137,8 +144,8 @@ footer .actions{margin-top:1rem}
 
 <header class="hero" id="top">
   <div class="avatar" aria-hidden="true">
-    <!-- Upload a photo named soham.jpg next to this file; initials show until then -->
-    <img src="soham.jpg" alt="" onerror="this.remove()">
+    <!-- Photo file: Soham.jpeg next to this file; initials show until then -->
+    <img src="Soham.jpeg" alt="" onerror="this.remove()">
     <span>SN</span>
   </div>
   <div>
@@ -188,6 +195,14 @@ footer .actions{margin-top:1rem}
       <text class="lbl lbl-accent" x="935" y="22" text-anchor="end">End-to-end AI engineering</text>
     </g>
   </svg>
+  <ol class="chart-mobile">
+    <li style="display:contents"><span>2021</span><div>Bank audit</div></li>
+    <li style="display:contents"><span>2022</span><div>Data analyst</div></li>
+    <li style="display:contents"><span>2023</span><div>NLP &amp; ML</div></li>
+    <li style="display:contents"><span>2024</span><div>M.Sc. TU Dortmund</div></li>
+    <li style="display:contents"><span>2025</span><div>Kelvion SIOP</div></li>
+    <li style="display:contents"><span>Next</span><div class="next">End-to-end AI engineering</div></li>
+  </ol>
 </figure>
 
 <section id="about">
