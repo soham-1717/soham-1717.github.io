@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soham Naik — Data Scientist & AI Engineer</title>
+<meta name="description" content="Soham Naik is a data scientist and AI engineer building intelligent tools for manufacturing. M.Sc. Data Science, TU Dortmund.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8FAFB; --surface:#FFFFFF; --ink:#15212E; --muted:#566476;
+  --line:#D6DCE3; --accent:#0B7A75; --accent-soft:rgba(11,122,117,.14);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="dark"]{
+  --bg:#0E151D; --surface:#151F2A; --ink:#E4E9EF; --muted:#9AA7B6;
+  --line:#26323F; --accent:#3CC3B8; --accent-soft:rgba(60,195,184,.16);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+.prose{max-width:66ch}
+
+/* Nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem}
+.brand{font-weight:600;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap;font-size:.95rem}
+.nav-links a{color:var(--muted);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.3rem .75rem;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* Hero */
+.hero{padding:3rem 0 1rem;display:grid;grid-template-columns:auto 1fr;gap:1.75rem;align-items:center}
+.avatar{width:112px;height:112px;border-radius:50%;overflow:hidden;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent);font-weight:600;font-size:2rem;border:1px solid var(--line)}
+.avatar{position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.08;margin:0 0 .5rem;font-weight:700;letter-spacing:-.02em}
+.lede{font-size:1.2rem;color:var(--muted);margin:0 0 1.25rem;max-width:52ch}
+.role{font-size:1.3rem;font-weight:600;color:var(--accent);margin:0 0 .5rem}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.6rem 1.1rem;border-radius:8px;font-weight:500;text-decoration:none;font-size:.95rem}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+
+/* Career chart: the one bold element */
+.chart{margin:2.5rem 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.5rem 0 1rem}
+.chart-cap{font-size:.9rem;color:var(--muted);margin:0 0 .75rem}
+.chart svg{width:100%;height:auto;overflow:visible}
+.axis text{font-family:var(--mono);font-size:13px;fill:var(--muted)}
+.axis line{stroke:var(--line)}
+.hist{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.fc{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:8 7;stroke-linecap:round}
+.band{fill:var(--accent-soft)}
+.dot{fill:var(--bg);stroke:var(--ink);stroke-width:2.5}
+.dot-now{fill:var(--accent);stroke:var(--accent)}
+.lbl{font-family:var(--sans);font-size:15px;fill:var(--ink);font-weight:500}
+.lbl-accent{fill:var(--accent);font-weight:600}
+.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 1.8s ease-out .2s forwards}
+.fade{opacity:0;animation:fade .6s ease-out 1.9s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fade{animation:none;opacity:1}}
+@media (max-width:640px){.lbl{display:none}.hero{grid-template-columns:1fr}.avatar{width:88px;height:88px}}
+
+/* Sections */
+section{padding:4rem 0 0}
+h2{font-size:1.6rem;margin:0 0 1.25rem;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin:0 0 .35rem}
+.muted{color:var(--muted)}
+
+.kelvion{display:grid;grid-template-columns:1.3fr 1fr;gap:2.5rem;align-items:start}
+.kelvion ul{margin:0;padding:0;list-style:none;border-left:3px solid var(--accent)}
+.kelvion li{padding:.5rem 0 .5rem 1rem}
+.kelvion li strong{display:block}
+
+.solutions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem 2rem}
+.solutions div{border-top:2px solid var(--ink);padding-top:.75rem}
+.solutions p{margin:.25rem 0 0;color:var(--muted);font-size:.98rem}
+
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem}
+.feat .ctx{font-size:.9rem;color:var(--accent);font-weight:500;margin:0 0 .75rem}
+.feat p{margin:.5rem 0}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;padding:0;list-style:none}
+.tags li{font-size:.8rem;padding:.2rem .6rem;border-radius:999px;background:var(--accent-soft);color:var(--ink)}
+.more{list-style:none;margin:0;padding:0}
+.more li{display:grid;grid-template-columns:minmax(200px,1fr) 2fr;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--line)}
+.more li p{margin:0;color:var(--muted)}
+
+.timeline{list-style:none;margin:0;padding:0;counter-reset:none}
+.timeline li{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.timeline .when{font-family:var(--mono);font-size:.88rem;color:var(--muted);padding-top:.2rem}
+.timeline ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted)}
+.timeline ul li{display:list-item;border:0;padding:.15rem 0}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
+.cols p{margin:.2rem 0}
+.skill-group{margin-bottom:1rem}
+.skill-group h3{font-size:1rem}
+
+footer{margin:5rem 0 0;padding:2.5rem 0 3rem;border-top:1px solid var(--line)}
+footer h2{margin-bottom:.5rem}
+footer .actions{margin-top:1rem}
+.fine{font-size:.85rem;color:var(--muted);margin-top:2.5rem}
+
+@media (max-width:800px){
+  .kelvion,.featured{grid-template-columns:1fr}
+  .more li,.timeline li{grid-template-columns:1fr;gap:.25rem}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <a class="brand" href="#top">Soham Naik</a>
+  <div class="nav-links">
+    <a href="#kelvion">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">Dark mode</button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="avatar" aria-hidden="true">
+    <!-- Upload a photo named soham.jpg next to this file; initials show until then -->
+    <img src="soham.jpg" alt="" onerror="this.remove()">
+    <span>SN</span>
+  </div>
+  <div>
+    <h1>Soham Naik</h1>
+    <p class="role">Data Scientist &amp; AI Engineer</p>
+    <p class="lede">I teach machines to predict the future, so manufacturers can plan better. (Still working on predicting Deutsche Bahn.)</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://linkedin.com/in/sohamnaik17" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/soham-1717" target="_blank" rel="noopener">GitHub</a>
+      <!-- Add a personal email here: <a class="btn btn-ghost" href="mailto:you@example.com">Email</a> -->
+    </div>
+  </div>
+</header>
+
+<figure class="chart" aria-label="Career path drawn as a time series, with a forecast toward AI engineering">
+  <figcaption class="chart-cap">My career, plotted the way a forecaster would. Confidence band included, because nobody is 100% sure about the future.</figcaption>
+  <svg viewBox="0 0 1000 300" role="img" aria-hidden="true">
+    <g class="axis">
+      <line x1="60" y1="270" x2="940" y2="270"/>
+      <text x="60" y="292" text-anchor="middle">2021</text>
+      <text x="186" y="292" text-anchor="middle">2022</text>
+      <text x="311" y="292" text-anchor="middle">2023</text>
+      <text x="437" y="292" text-anchor="middle">2024</text>
+      <text x="563" y="292" text-anchor="middle">2025</text>
+      <text x="689" y="292" text-anchor="middle">2026</text>
+      <text x="814" y="292" text-anchor="middle">2027</text>
+      <text x="940" y="292" text-anchor="middle">2028</text>
+    </g>
+    <path class="band fade" d="M780,110 C840,85 890,55 940,35 L940,110 C890,112 840,114 780,110 Z"/>
+    <path class="hist draw" d="M123,245 L186,222 L374,190 L474,158 L600,132 L780,110"/>
+    <path class="fc fade" d="M780,110 C840,98 890,82 940,72"/>
+    <g>
+      <circle class="dot" cx="123" cy="245" r="6"/>
+      <circle class="dot" cx="186" cy="222" r="6"/>
+      <circle class="dot" cx="374" cy="190" r="6"/>
+      <circle class="dot" cx="474" cy="158" r="6"/>
+      <circle class="dot" cx="600" cy="132" r="6"/>
+      <circle class="dot dot-now" cx="780" cy="110" r="7"/>
+    </g>
+    <g class="fade">
+      <text class="lbl" x="123" y="228" text-anchor="middle">Bank audit</text>
+      <text class="lbl" x="186" y="250" text-anchor="middle">Data analyst</text>
+      <text class="lbl" x="374" y="173" text-anchor="middle">NLP &amp; ML</text>
+      <text class="lbl" x="474" y="186" text-anchor="middle">M.Sc. TU Dortmund</text>
+      <text class="lbl" x="600" y="115" text-anchor="middle">Kelvion SIOP</text>
+      <text class="lbl" x="780" y="140" text-anchor="middle">Now</text>
+      <text class="lbl lbl-accent" x="935" y="22" text-anchor="end">End-to-end AI engineering</text>
+    </g>
+  </svg>
+</figure>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="prose">
+    <p>I'm a data scientist and AI engineer. The data science side keeps me honest: statistics, forecasting and clean, trustworthy data. The AI side turns that into things people actually use, like predictive models, LLM assistants and automated workflows. One without the other is like a heat exchanger without the heat.</p>
+    <p>With 2+ years across manufacturing and tech, I'm currently applying AI to planning at Kelvion while completing an M.Sc. in Data Science at TU Dortmund. My goal is end-to-end AI engineering: from raw ERP data to a working intelligent tool.</p>
+  </div>
+</section>
+
+<section id="kelvion">
+  <h2>AI in manufacturing at Kelvion</h2>
+  <div class="kelvion">
+    <div class="prose">
+      <p>Manufacturers have to decide what to build, buy and staff months before orders arrive. AI helps close that gap by learning from sales signals and history to predict demand, so plants can plan capacity and materials earlier.</p>
+      <p>At Kelvion, a global heat exchanger manufacturer, I work on exactly this in the SIOP (Sales, Inventory &amp; Operations Planning) team. I build <strong>AI-driven order intake forecasting</strong>: machine learning models that combine CRM sales-pipeline signals with ERP order history to predict incoming demand per site. The forecasts feed the monthly planning cycle used by teams across several countries.</p>
+      <p>Around the models, I automate the data flow end to end, so planners get fresh, reliable predictions without manual preparation. Kelvion's heat exchangers keep machines cool; my job is to keep the planners cool when the orders come in.</p>
+    </div>
+    <ul>
+      <li><strong>AI demand forecasting</strong><span class="muted">ML models on CRM + ERP data that improved short-term planning accuracy</span></li>
+      <li><strong>Intelligent data pipelines</strong><span class="muted">Automated ERP and CRM integration feeding the models</span></li>
+      <li><strong>Process automation</strong><span class="muted">About 30% less manual effort on recurring reporting</span></li>
+      <li><strong>Capacity dashboard</strong><span class="muted">Workload view across major sites, in progress</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="solutions">
+  <h2>What I build</h2>
+  <div class="solutions">
+    <div><h3>LLM &amp; RAG apps</h3><p>Document Q&amp;A assistants and internal knowledge tools using LangChain, vector search and LLM APIs.</p></div>
+    <div><h3>Forecasting &amp; ML</h3><p>Demand and time-series forecasting, from classical models to gradient-boosted ensembles.</p></div>
+    <div><h3>Computer vision</h3><p>Image-based defect detection for industrial inspection.</p></div>
+    <div><h3>Automation &amp; BI</h3><p>Python pipelines, Power BI dashboards and Power Automate flows that replace manual work.</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="featured">
+    <article class="feat">
+      <h3>Sovereign ESG profiles</h3>
+      <p class="ctx">Erasmus+ BIP, University of Naples Federico II, 2026</p>
+      <p>Grouped 179 countries into five sovereign ESG profiles using principal component analysis and k-means on 24 World Bank ESG indicators.</p>
+      <p class="muted">Three components explain 63.8% of the variation. A key finding: low emissions and strong social and governance performance are largely separate, and partly opposed.</p>
+      <ul class="tags"><li>PCA</li><li>k-means</li><li>Bootstrap validation</li><li>Sustainable finance</li></ul>
+    </article>
+    <article class="feat">
+      <h3>Data Mining Cup forecasting</h3>
+      <p class="ctx">Team competition, TU Dortmund</p>
+      <p>Forecast 14 material fractions for a REMONDIS recycling plant with an ensemble of Holt-Winters, Random Forest and LightGBM models.</p>
+      <p class="muted">Blend weights were optimized under constraints and evaluated with rolling-window cross-validation and sMAPE.</p>
+      <ul class="tags"><li>Time series</li><li>LightGBM</li><li>Ensembling</li><li>Python</li></ul>
+    </article>
+    <article class="feat">
+      <h3>AI document Q&amp;A assistant</h3>
+      <p class="ctx">LLM + RAG application</p>
+      <p>Upload a PDF and ask questions in plain language. The app finds the relevant passages with vector search and answers with an LLM.</p>
+      <p class="muted">Built as a lightweight internal knowledge tool that could plug into enterprise document workflows.</p>
+      <ul class="tags"><li>LangChain</li><li>OpenAI API</li><li>FAISS</li><li>RAG</li><li>Python</li></ul>
+    </article>
+    <article class="feat">
+      <h3>Blister detection system</h3>
+      <p class="ctx">Computer vision for manufacturing</p>
+      <p>Image-based system that detects surface blisters on industrial parts with over 90% precision.</p>
+      <p class="muted">Reduces manual inspection effort and makes quality checks more consistent.</p>
+      <ul class="tags"><li>Computer vision</li><li>Deep learning</li><li>Quality inspection</li><li>Python</li></ul>
+    </article>
+    <article class="feat">
+      <h3>Crop yield prediction</h3>
+      <p class="ctx">Deep learning, agriculture</p>
+      <p>CNN trained on soil and climate data to recommend the most profitable crop for each region.</p>
+      <p class="muted">Reached about 88% classification accuracy across 10 crop categories.</p>
+      <ul class="tags"><li>CNN</li><li>TensorFlow</li><li>Keras</li><li>Classification</li></ul>
+    </article>
+    <article class="feat">
+      <h3>Decentralized crowdfunding app</h3>
+      <p class="ctx">Full-stack Web3</p>
+      <p>Crowdfunding platform running on the Polygon network, with smart contracts handling contributions.</p>
+      <p class="muted">Real-time campaign updates via Socket.io and a React front end.</p>
+      <ul class="tags"><li>React</li><li>Solidity</li><li>Python</li><li>Firebase</li><li>Socket.io</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <ol class="timeline">
+    <li><span class="when">2025 – now</span><div><h3>Working Student, Data Analysis (SIOP)</h3><span class="muted">Kelvion GmbH, Herne</span>
+      <ul><li>Demand forecasting models in Python for the monthly SIOP cycle</li><li>ERP/CRM data pipelines and Python automation (about 30% less manual effort)</li><li>BI dashboard for workload allocation across major sites</li></ul></div></li>
+    <li><span class="when">2023 – 2024</span><div><h3>Data Analyst, NLP &amp; ML</h3><span class="muted">Objectways Technologies, Nashik</span>
+      <ul><li>Text classification pipelines that raised annotation throughput by about 25%</li><li>BERT-based NER, cutting tagging errors by about 18% versus rules</li><li>Sentiment analysis and topic modeling on 100K+ records</li></ul></div></li>
+    <li><span class="when">2022 – 2023</span><div><h3>Data Analyst</h3><span class="muted">UpriseSol LLP, Nashik</span>
+      <ul><li>Power BI dashboards that cut weekly reporting time by about 35%</li><li>SQL optimization, reducing query runtime by 20%</li><li>Python scripts for automated vulnerability detection</li></ul></div></li>
+    <li><span class="when">2021</span><div><h3>Data Analyst &amp; Audit Intern</h3><span class="muted">NS Gokhale &amp; Co. (Bank of India), Mumbai</span>
+      <ul><li>Analyzed data-centre datasets for an IT audit and built Power BI reports for management</li></ul></div></li>
+  </ol>
+</section>
+
+<section id="background">
+  <h2>Education and skills</h2>
+  <div class="cols">
+    <div>
+      <div class="skill-group"><h3>M.Sc. Data Science</h3><p class="muted">TU Dortmund University, 2024 – present</p></div>
+      <div class="skill-group"><h3>B.Sc. Statistics</h3><p class="muted">Savitribai Phule Pune University, 2018 – 2021. Thesis on statistical quality control of diesel.</p></div>
+      <div class="skill-group"><h3>Certifications</h3><p class="muted">Practical Time Series Analysis (Coursera), Statistical Thinking and Data Science with R, Power BI for Financial Reporting</p></div>
+      <div class="skill-group"><h3>Languages</h3><p class="muted">English (C2), German (A2, learning)</p></div>
+    </div>
+    <div>
+      <div class="skill-group"><h3>Programming</h3><ul class="tags"><li>Python</li><li>R</li><li>SQL</li><li>C++</li><li>MATLAB</li></ul></div>
+      <div class="skill-group"><h3>AI and ML</h3><ul class="tags"><li>scikit-learn</li><li>PyTorch</li><li>TensorFlow</li><li>Transformers</li><li>LangChain</li><li>RAG</li><li>OpenAI API</li></ul></div>
+      <div class="skill-group"><h3>Microsoft and data</h3><ul class="tags"><li>Power BI</li><li>Power Automate</li><li>Azure</li><li>MS Fabric</li><li>ERP/CRM integration</li><li>SAP BW</li></ul></div>
+      <div class="skill-group"><h3>Tools</h3><ul class="tags"><li>Git</li><li>Docker</li><li>Jupyter</li><li>CI/CD</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>Get in touch</h2>
+  <p class="muted prose">Open to roles in data science, forecasting and AI engineering. My model predicts you'll reach out. Please don't make it wrong; I report the error metrics. The quickest way to reach me is LinkedIn.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="https://linkedin.com/in/sohamnaik17" target="_blank" rel="noopener">Message on LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/soham-1717" target="_blank" rel="noopener">See GitHub</a>
+  </div>
+  <p class="fine">Soham Naik, Dortmund, Germany</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('themeBtn'), root=document.documentElement;
+  function isDark(){var t=root.getAttribute('data-theme');return t==='dark'}
+  function label(){btn.textContent=isDark()?'Light mode':'Dark mode'}
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  label();
+  btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+    label();
+  });
+})();
+</script>
+</body>
+</html>
